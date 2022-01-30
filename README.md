@@ -104,8 +104,11 @@
 
 ### 2.2 - Instalação do EF
 
-- Instalação do Entity Framework
+- Instalação da última versão do Entity Framework
 > dotnet tool install --global dotnet-ef
+
+- Instalação de uma versão específica do Entity Framework. Como meu projeto é em .NET 5 instalei a versão 5.0.13
+> dotnet tool install --global dotnet-ef --version 5.0.13
 
 - Utilitário via CLI do Entity Framework
 > dotnet-ef
@@ -139,3 +142,16 @@
 >     \</PackageReference><br>
 >     \<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" /><br>
 >   \</ItemGroup><br>
+
+<br><hr><br>
+
+### 2.3 - Iniciando as Migrations
+
+- Acessar o diretório do projeto (/home/gilmar/Projetos/ProEventos/Back/src/ProEventos.API)
+- Digitar o comando para iniciar as Migrations com o nome Initial (pode ser nome qualquer) e definindo a saída para o diretório Data/Migrations
+> dotnet ef migrations add Initial -o Data/Migrations
+
+- Iniciando o database
+> dotnet ef database update
+
+- Para gerenciamento do banco de dados SqLite pode-se utilizar o DB Browser for SQLite
