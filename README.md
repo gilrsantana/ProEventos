@@ -25,13 +25,31 @@
 
 <br><hr><br>
 
-### 1.3 - node, npm e angular
+### 1.3 - node, nvm, npm e angular
 - O projeto utiliza node, npm e angular nas versões abaixo:
-> Node: v16.13.2
+> Node: v14.18.3
 
-> Npm: 8.4.0
+> Npm: 6.14.15
 
 > Angular: Versão 12
+
+- Instalação do nvm conforme link
+> https://letscodepare.com/blog/how-to-install-nvm-node-version-manager-on-linux
+
+- Comandos nvm - Listar versões disponíveis no servidor remoto: 
+> nvm ls-remote
+
+- Comandos nvm - Instalar última versão estável: 
+> nvm install stable
+
+- Comandos nvm - Instalar versão específica: 
+> nvm install v14.18.3
+
+- Comandos nvm - Listar versões do node instaladas na máquina: 
+> nvm list
+
+- Comandos nvm - Definir a versão de node a ser utilizada: 
+> nvm use v14.18.3
 
 - Instalação do node
 > sudo apt install nodejs
@@ -41,6 +59,9 @@
 
 - Instalação do angular
 > npm install -g @angular/cli@12
+
+- Apresentar versão dos programas instalados
+> ng --version
 
 <br><hr><br>
 
@@ -155,3 +176,54 @@
 > dotnet ef database update
 
 - Para gerenciamento do banco de dados SqLite pode-se utilizar o DB Browser for SQLite
+
+<br><hr><br>
+
+## 3 - Angular
+<br>
+
+### 3.1 - Extensão VS Code
+
+- instalar extensão Angular essentials for VS Code.
+
+<br><hr><br>
+
+### 3.2 - Instalações no Angular
+
+- Iniciar o projeto Angular
+
+> ng new ProEventos.App
+
+- Would you like to add Angular routing? *Yes*
+
+- Which stylesheet format would you like to use? *SCSS*
+
+<br><hr><br>
+
+### 3.3 - Comandos do projeto
+
+- Todos os comandos precisam ser dados dentro do diretório do projeto no caso:
+
+> /home/gilmar/Projetos/ProEventos/Front/ProEventos-App
+
+- O projeto utiliza alguns comandos padrão que são definidos no arquivo package.json "scripts"
+
+- Os comandos podem ser dados com npm ou ng. Por exemplo para a opção start (ambos iniciariam o projeto) ficaria assim:
+
+> npm start ou ng serve
+
+<br><hr><br>
+
+### 3.4 - Geração de componentes
+
+- Os componentes no angular podem ser gerados pela CLI
+
+- Para gerar um componente pode-se utilizar o comando completo ou o comando resumido.
+
+- Geração do componente eventos com o comando completo
+
+> ng generate component eventos
+
+- Geração do componete palestrantes com o comando resumido
+
+> ng g c palestrantes
