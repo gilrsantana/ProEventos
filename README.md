@@ -2,6 +2,7 @@
 
 - Projeto desenvolvido em ambiente Linux.
 - Eventualmente, algumas definições e instalações devem se adequar ao ambiente de SO diferente.
+- Este documento contém informações gerais de configuração e clone para o projeto
 
 ## 1 - Configuração e instalações iniciais iniciais
 <br>
@@ -58,7 +59,7 @@
 > sudo apt install npm
 
 - Instalação do angular
-> npm install -g @angular/cli@
+> npm install -g @angular/cli
 
 - Apresentar versão dos programas instalados
 > ng --version
@@ -254,3 +255,38 @@
 > @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
 
 > @import '../node_modules//@fortawesome/fontawesome-free/css/all.min.css';
+<br>
+
+## 5 - CLone do projeto
+
+- Execute o comando abaixo para fazer o clone do projeto no diretório de preferência de seu computador
+
+> https://github.com/gilrsantana/ProEventos.git
+
+## 5.1 - Restaurando Back
+
+- Acesse, no diretório recém criado, a pasta ProEventos/Back/src/ProEventos.API e nela digite o comando abaixo para fazer a restauração do projeto com suas respectivas dependências:
+
+> dotnet restore
+
+- Após isso, faça a compilação do projeto com o comando abaixo
+
+> dotnet build
+
+- Se tudo correu bem, será mostrada a mensagem "Compilação com êxito"
+
+- Inicie o projeto com o comando abaixo
+
+> dotnet watch run
+
+## 5.2 - Restaurando Front
+
+- Acesse, no diretório recém criado, a pasta ProEventos/Front/ProEventos.App e nela digite o comando abaixo para fazer a restauração do projeto com suas respectivas dependências:
+
+> npm install
+
+- Após isso, inicie o projeto com o comando abaixo
+
+> npm start
+
+- Se tudo correu bem, será aberta a janela do navegador com o projeto em execução.
