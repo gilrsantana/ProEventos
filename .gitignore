@@ -452,7 +452,7 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
+/Front/ProEventos.App/.vscode
 ##
 ## Rider
 ##
@@ -497,3 +497,42 @@ testem.log
 /typings
 
 # System Files
+
+
+# Angular 
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/Front/ProEventos.App/dist
+/Front/ProEventos.App/tmp
+/Front/ProEventos.App/out-tsc
+/Front/ProEventos.App/bazel-out
+
+# Node
+/Front/ProEventos.App/node_modules
+/Front/ProEventos.App/npm-debug.log
+/Front/ProEventos.App/yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+
+# Miscellaneous
+/Front/ProEventos.App/.angular/cache
+/Front/ProEventos.App/.sass-cache/
+/Front/ProEventos.App/connect.lock
+/Front/ProEventos.App/coverage
+/Front/ProEventos.App/libpeerconnection.log
+/Front/ProEventos.Apptestem.log
+/Front/ProEventos.App/typings
+
+# System files
+/Front/ProEventos.App/.DS_Store
+/Front/ProEventos.App/Thumbs.db

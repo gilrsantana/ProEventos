@@ -27,11 +27,11 @@
 
 ### 1.3 - node, nvm, npm e angular
 - O projeto utiliza node, npm e angular nas versões abaixo:
-> Node: v14.18.3
+> Node: v16.13.2
 
-> Npm: 6.14.15
+> Npm: 8.1.2
 
-> Angular: Versão 12
+> Angular: Versão 13
 
 - Instalação do nvm conforme link
 > https://letscodepare.com/blog/how-to-install-nvm-node-version-manager-on-linux
@@ -43,13 +43,13 @@
 > nvm install stable
 
 - Comandos nvm - Instalar versão específica: 
-> nvm install v14.18.3
+> nvm install v16.13.2
 
 - Comandos nvm - Listar versões do node instaladas na máquina: 
 > nvm list
 
 - Comandos nvm - Definir a versão de node a ser utilizada: 
-> nvm use v14.18.3
+> nvm use v6.13.2
 
 - Instalação do node
 > sudo apt install nodejs
@@ -58,7 +58,7 @@
 > sudo apt install npm
 
 - Instalação do angular
-> npm install -g @angular/cli@12
+> npm install -g @angular/cli@
 
 - Apresentar versão dos programas instalados
 > ng --version
@@ -227,3 +227,30 @@
 - Geração do componete palestrantes com o comando resumido
 
 > ng g c palestrantes
+
+### 3.5 - Fontawesome, ngx-bootstrap e bootstrap
+
+- Todos os comandos precisam ser dados dentro do diretório do projeto no caso:
+
+> /home/gilmar/Projetos/ProEventos/Front/ProEventos-App
+
+- Instalação do Fontawesome
+
+> npm install --save @fortawesome/fontawesome-free
+
+- Instalação do ngx-bootstrap
+
+> npm install ngx-bootstrap --save
+
+- Instalação do bootstrap
+- Observação: a versão do bootstrap deve estar relacionada à versão suportada pelo ngx-bootstrap
+
+> npm install bootstrap@5
+
+- Adicionar as referências abaixo no arquivo styles.scss
+
+> @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+> @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+
+> @import '../node_modules//@fortawesome/fontawesome-free/css/all.min.css';
