@@ -290,3 +290,39 @@
 > npm start
 
 - Se tudo correu bem, será aberta a janela do navegador com o projeto em execução.
+
+<br>
+
+## 6 - Estruturando o projeto Back
+
+- Criando a solução
+
+>  dotnet sln ProEventos.sln add ProEventos.API    
+
+- Criando as ClassLib
+
+> dotnet new classlib -n ProEventos.Persistence    
+
+> dotnet new classlib -n ProEventos.Domain    
+
+> dotnet new classlib -n ProEventos.Application    
+
+- Adicionando as ClassLib à Solução
+
+> dotnet sln ProEventos.sln add ProEventos.Application
+
+> dotnet sln ProEventos.sln add ProEventos.API
+
+> dotnet sln ProEventos.sln add ProEventos.Domain
+
+> dotnet sln ProEventos.sln add ProEventos.Persistence
+
+- Adicionando referência às ClassLib
+
+> dotnet add ProEventos.API/ProEventos.API.csproj reference ProEventos.Application
+
+> dotnet add ProEventos.Application/ProEventos.Application.csproj reference ProEventos.Domain 
+
+> dotnet add ProEventos.Application/ProEventos.Application.csproj reference ProEventos.Persistence 
+
+> dotnet add ProEventos.Persistence/ProEventos.Persistence.csproj reference ProEventos.Domain 
