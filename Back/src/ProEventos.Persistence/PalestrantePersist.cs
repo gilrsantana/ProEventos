@@ -17,7 +17,8 @@ namespace ProEventos.Persistence
 
         public async Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos = false)
         {
-            IQueryable<Palestrante> query = _context.Palestrantes
+            // Inserido .AsNoTracking() para não trackear (prender) o objeto durante a manipulação
+            IQueryable<Palestrante> query = _context.Palestrantes.AsNoTracking()
                             .Include(p => p.RedesSociais);
                             
             if (includeEventos)
@@ -34,7 +35,8 @@ namespace ProEventos.Persistence
 
         public async Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos = false)
         {
-            IQueryable<Palestrante> query = _context.Palestrantes
+            // Inserido .AsNoTracking() para não trackear (prender) o objeto durante a manipulação
+            IQueryable<Palestrante> query = _context.Palestrantes.AsNoTracking()
                             .Include(p => p.RedesSociais);
                             
 
@@ -51,7 +53,8 @@ namespace ProEventos.Persistence
 
         public async Task<Palestrante> GetPalestranteByIdAsync(int palestranteId, bool includeEventos = false)
         {
-            IQueryable<Palestrante> query = _context.Palestrantes
+            // Inserido .AsNoTracking() para não trackear (prender) o objeto durante a manipulação
+            IQueryable<Palestrante> query = _context.Palestrantes.AsNoTracking()
                             .Include(p => p.RedesSociais);
                             
             if (includeEventos)
