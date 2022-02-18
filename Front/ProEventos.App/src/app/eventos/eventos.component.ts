@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {EventoService} from "../services/evento.service";
-import {Observer} from "rxjs";
 import {Evento} from "../models/Evento";
 
 @Component({
@@ -11,7 +10,7 @@ import {Evento} from "../models/Evento";
 export class EventosComponent implements OnInit {
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
-  public widthImg: number = 150;
+  public widthImg = 150;
   public isCollapsed = true;
   public showImg = true;
   private _filtroLista: string = '';
@@ -45,14 +44,25 @@ export class EventosComponent implements OnInit {
   }
 
   public getEventos(): void {
-    this.eventoService.getEventos().subscribe(
-      (_eventos: Evento[]) => {
-        this.eventos = _eventos;
+    const observer = {
+      next: (eventosResponse: Evento[]) => {
+        this.eventos = eventosResponse;
         this.eventosFiltrados = this.eventos;
       },
-      error => console.log(error)
-    );
+      error: (error: any) => {
+        console.log(error)
+      },
+      complete: () => {
+      }
+    }
 
+    this.eventoService.getEventos().subscribe(observer
+      // (eventosResponse: Evento[]) => {
+      //   this.eventos = eventosResponse;
+      //   this.eventosFiltrados = this.eventos;
+      // },
+      // error => console.log(error)
+    );
   }
 
 }

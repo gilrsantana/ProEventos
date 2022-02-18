@@ -21,7 +21,8 @@
     <th>
       <button class="btn btn-sm btn-outline-light fw-bolder"
               (click)="alterarEstadoImg()">
-        {{showImg ? "Exibir" : "Ocultar"}}
+        <i class="{{showImg ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+        {{showImg ? "exibir" : "ocultar"}}
       </button>
     </th>
     <th>#</th>
@@ -42,15 +43,21 @@
            [collapse]="showImg"
            [isAnimated]="true">
     </td>
-    <td>{{evento.eventoId}}</td>
+    <td>{{evento.id}}</td>
     <td>{{evento.tema}}</td>
     <td>{{evento.local}}</td>
     <td class="text-center">{{evento.dataEvento}}</td>
     <td class="text-center">{{evento.qtdPessoas}}</td>
-    <td class="text-center">{{evento.lote}}</td>
+    <td class="text-center">{{evento.lotes[0].nome}}</td>
     <td class="text-center">
-      <button type="button" class="btn btn-sm btn-primary me-3">Editar</button>
-      <button type="button" class="btn btn-sm btn-danger">Excluir</button>
+      <button type="button" class="btn btn-sm btn-primary me-3">
+        <i class="fa fa-edit"></i>
+        Editar
+      </button>
+      <button type="button" class="btn btn-sm btn-danger">
+        <i class="fa fa-trash"></i>
+        Excluir
+      </button>
     </td>
   </tr>
   </tbody>
