@@ -3,6 +3,7 @@ import { EventoService } from '../services/evento.service';
 import { Evento } from '../models/Evento';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
 	selector: 'app-eventos',
@@ -23,8 +24,9 @@ export class EventosComponent implements OnInit {
 	constructor(
 		private eventoService: EventoService,
 		private modalService: BsModalService,
-		private toastr: ToastrService
-	) { }
+		private toastr: ToastrService,
+		private spinner: NgxSpinnerService)
+		{ }
 
 	// ------- Getters e Setters ------ //
 	public get filtroLista(): string {
@@ -38,6 +40,12 @@ export class EventosComponent implements OnInit {
 			: this.eventos;
 	}
 
+	// ------- OnInit ------ //
+	public ngOnInit(): void {
+		this.spinner.show();
+		this.getEventos();
+	}
+
 	// ------- Métodos da classe ------ //
 	public filtrarEventos(filtrarPor: string): Evento[] {
 		filtrarPor = filtrarPor.toLocaleLowerCase();
@@ -48,9 +56,6 @@ export class EventosComponent implements OnInit {
 		);
 	}
 
-	public ngOnInit(): void {
-		this.getEventos();
-	}
 
 	public alterarEstadoImg(): void {
 		this.showImg = !this.showImg;
@@ -63,9 +68,10 @@ export class EventosComponent implements OnInit {
 				this.eventosFiltrados = this.eventos;
 			},
 			error: (error: any) => {
-				console.log(error);
+				this.spinner.hide();
+				this.toastr.error('Erro ao caregar os eventos!', 'Erro');
 			},
-			complete: () => { },
+			complete: () => { this.spinner.hide(); },
 		};
 
 		this.eventoService.getEventos().subscribe(
