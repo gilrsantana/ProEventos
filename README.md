@@ -253,7 +253,7 @@
 
 <br><hr><br>
 
-### 3.4 - Geração de componentes
+### 3.4 - Geração de componentes e outros elementos
 
 - Os componentes no angular podem ser gerados pela CLI
 
@@ -266,6 +266,14 @@
 - Geração do componete palestrantes com o comando resumido
 
 > ng g c palestrantes
+
+- A geração de elementos com o 'ng' é bem ampla, abaixo alguns exemplos de componetes gerados:
+
+> ng generate class Constants
+
+> ng generate pipe DateTimeFormat
+
+> ng generate service evento
 
 ### 3.5 - Fontawesome, ngx-bootstrap e bootstrap
 

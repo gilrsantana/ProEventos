@@ -11,25 +11,41 @@ import {PalestrantesComponent} from './palestrantes/palestrantes.component';
 import {NavComponent} from './nav/nav.component';
 
 import {CollapseModule} from 'ngx-bootstrap/collapse';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
+
 import {EventoService} from "./services/evento.service";
+import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EventosComponent,
-    PalestrantesComponent,
-    NavComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CollapseModule.forRoot(),
-    HttpClientModule,
-    FormsModule
-  ],
-  providers: [EventoService],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		EventosComponent,
+		PalestrantesComponent,
+		NavComponent,
+		DateTimeFormatPipe
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		FormsModule,
+		CollapseModule.forRoot(),
+		TooltipModule.forRoot(),
+		BsDropdownModule.forRoot(),
+		ModalModule.forRoot(),
+		ToastrModule.forRoot({
+			timeOut: 4000,
+			positionClass: 'toast-bottom-right',
+			preventDuplicates: true,
+			progressBar: true
+		  })
+	],
+	providers: [EventoService],
+	bootstrap: [AppComponent]
 })
 export class AppModule {
 }
