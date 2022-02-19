@@ -1,0 +1,80 @@
+<app-titulo [titulo] = nomeDaPagina></app-titulo>
+<hr>
+
+<div class="">
+	<div class="mb-2 row">
+		<div class="col-1">
+			<label class="lh-lg fs-5 text-end">Filtro:</label>
+		</div>
+		<div class="col-4">
+			<input type="text" class="form-control me-2" placeholder="Buscar" [(ngModel)]="filtroLista">
+		</div>
+	</div>
+</div>
+<table class="table table-striped">
+	<thead class="table-dark">
+		<tr>
+			<th>
+				<button class="btn btn-sm btn-outline-light fw-bolder" (click)="alterarEstadoImg()">
+					<i class="{{showImg ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+					{{showImg ? "exibir" : "ocultar"}}
+				</button>
+			</th>
+			<th>#</th>
+			<th>Tema</th>
+			<th>Local</th>
+			<th class="text-center">Data</th>
+			<th class="text-center">Qtd Pessoas</th>
+			<th class="text-center">Lote</th>
+			<th class="text-center">Opções</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="eventos.length">
+		<tr *ngFor="let evento of eventosFiltrados" class="align-middle">
+			<td>
+				<img src="{{evento.imagemURL}}" alt="{{evento.tema}} em {{evento.local}}" [style.width.px]=widthImg
+					[collapse]="showImg" [isAnimated]="true">
+			</td>
+			<td>{{evento.id}}</td>
+			<td>{{evento.tema}}</td>
+			<td>{{evento.local}}</td>
+			<td class="text-center">{{evento.dataEvento | dateTimeFormatPipe}}</td>
+			<td class="text-center">{{evento.qtdPessoas}}</td>
+			<td class="text-center">{{evento.lotes[0].nome | uppercase}}</td>
+			<td class="text-center">
+				<!-- Opção com botões agrupados -->
+				<!-- <div class="btn-group">
+				<button type="button" class="btn btn-sm btn-primary" tooltip="Editar">
+					<i class="fa fa-edit"></i>
+				</button>
+				<button type="button" class="btn btn-sm btn-danger" tooltip="Excluir">
+					<i class="fa fa-trash"></i>
+				</button>
+			</div> -->
+				<button type="button" class="btn btn-sm btn-primary me-3" tooltip="Editar">
+					<i class="fa fa-edit"></i>
+				</button>
+				<button type="button" class="btn btn-sm btn-danger" tooltip="Excluir" (click)="openModal(template)">
+					<i class="fa fa-trash"></i>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot *ngIf="!eventos.length">
+		<tr>
+			<td colspan="8" class="text-center">
+				<h4>Nenhum evento encontrado</h4>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+
+<ng-template #template>
+	<div class="modal-body text-center">
+		<p>Você deseja realmente excluir este evento?</p>
+		<button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+		<button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+	</div>
+</ng-template>
+
+<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "square-loader" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->
