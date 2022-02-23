@@ -13,89 +13,10 @@ import { TituloComponent } from 'src/app/shared/titulo/titulo.component';
 })
 
 export class EventosComponent implements OnInit {
-	public eventos: Evento[] = [];
-	public eventosFiltrados: Evento[] = [];
-	public widthImg = 150;
-	public isCollapsed = true;
-	public showImg = true;
-	private _filtroLista: string = '';
 	public nomeDaPagina: string = "Eventos";
-	modalRef?: BsModalRef;
+	public subtitulo: string = 'Gerenciando eventos';
+	public meuIcone: string = 'fa fa-calendar-alt fs-1 me-3'
 
-	// ------- Construtor ------ //
-	constructor(
-		private eventoService: EventoService,
-		private modalService: BsModalService,
-		private toastr: ToastrService,
-		private spinner: NgxSpinnerService)
-		{ }
-
-	// ------- Getters e Setters ------ //
-	public get filtroLista(): string {
-		return this._filtroLista;
-	}
-
-	public set filtroLista(value: string) {
-		this._filtroLista = value;
-		this.eventosFiltrados = this.filtroLista
-			? this.filtrarEventos(this.filtroLista)
-			: this.eventos;
-	}
-
-	// ------- OnInit ------ //
-	public ngOnInit(): void {
-		this.spinner.show();
-		this.getEventos();
-	}
-
-	// ------- Métodos da classe ------ //
-	public filtrarEventos(filtrarPor: string): Evento[] {
-		filtrarPor = filtrarPor.toLocaleLowerCase();
-		return this.eventos.filter(
-			(evento: { tema: string; local: string }) =>
-				evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
-				evento.local.toLocaleLowerCase().indexOf(filtrarPor) !== -1
-		);
-	}
-
-
-	public alterarEstadoImg(): void {
-		this.showImg = !this.showImg;
-	}
-
-	public getEventos(): void {
-		const observer = {
-			next: (eventosResponse: Evento[]) => {
-				this.eventos = eventosResponse;
-				this.eventosFiltrados = this.eventos;
-			},
-			error: (error: any) => {
-				this.spinner.hide();
-				this.toastr.error('Erro ao caregar os eventos!', 'Erro');
-			},
-			complete: () => { this.spinner.hide(); },
-		};
-
-		this.eventoService.getEventos().subscribe(
-			observer
-			// (eventosResponse: Evento[]) => {
-			//   this.eventos = eventosResponse;
-			//   this.eventosFiltrados = this.eventos;
-			// },
-			// error => console.log(error)
-		);
-	}
-
-	openModal(template: TemplateRef<any>): void {
-		this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-	}
-
-	confirm(): void {
-		this.modalRef?.hide();
-		this.toastr.success('O evento foi excluído com sucesso.', 'Excluído!');
-	}
-
-	decline(): void {
-		this.modalRef?.hide();
+	ngOnInit(): void {
 	}
 }
