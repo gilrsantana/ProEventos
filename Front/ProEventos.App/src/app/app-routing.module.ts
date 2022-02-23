@@ -11,6 +11,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 const routes: Routes = [
+	{ path: 'eventos', redirectTo: 'eventos/lista' },
 	{ path: 'eventos', component: EventosComponent,
 	children: [
 		{ path:'detalhe/:id', component: EventoDetalheComponent },

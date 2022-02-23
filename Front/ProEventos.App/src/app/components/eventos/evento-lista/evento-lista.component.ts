@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TituloComponent } from 'src/app/shared/titulo/titulo.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-evento-lista',
@@ -26,7 +27,8 @@ export class EventoListaComponent implements OnInit {
 		private eventoService: EventoService,
 		private modalService: BsModalService,
 		private toastr: ToastrService,
-		private spinner: NgxSpinnerService)
+		private spinner: NgxSpinnerService,
+		private router: Router)
 	{ }
 
 	// ------- Getters e Setters ------ //
@@ -96,5 +98,9 @@ export class EventoListaComponent implements OnInit {
 
 	decline(): void {
 		this.modalRef?.hide();
+	}
+
+	detalheEvento(id: number): void {
+		this.router.navigate([`eventos/detalhe/${id}`]);
 	}
 }
