@@ -12,7 +12,7 @@ import { PalestrantesComponent } from './components/palestrantes/palestrantes.co
 import { TituloComponent } from './shared/titulo/titulo.component';
 import { ContatosComponent } from './components/contatos/contatos.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilComponent } from './components/user/perfil/perfil.component';
 
 import { NavComponent } from './shared/nav/nav.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -26,6 +26,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { EventoService } from "./services/evento.service";
 import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { EventoListaComponent } from './components/eventos/evento-lista/evento-lista.component';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 @NgModule({
 	declarations: [
@@ -39,7 +42,10 @@ import { EventoListaComponent } from './components/eventos/evento-lista/evento-l
 		DashboardComponent,
 		PerfilComponent,
   		EventoDetalheComponent,
-    EventoListaComponent
+    EventoListaComponent,
+    UserComponent,
+    LoginComponent,
+    RegistrationComponent
 	],
 	imports: [
 		BrowserModule,
