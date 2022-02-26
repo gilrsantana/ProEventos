@@ -9,37 +9,104 @@
 
 	<div class="col-md-6">
 
-		<form class="p-1">
+		<form class="p-1" [formGroup]="form">
 			<div class="pb-2 d-block d-md-none">
 				<h3 class="border-bottom">Cadastro de Usuário</h3>
 			</div>
 			<div class="row justify-content-between">
+
+				<!-- **** Primeiro Nome **** -->
 				<div class="col-sm-6">
 					<label>Primeiro Nome</label>
-					<input type="text" class="form-control mt-2" placeholder="Insira o Primeiro nome" />
+					<input type="text" class="form-control mt-2"
+						[ngClass]="{'is-invalid': f.primeiroNome.errors && f.primeiroNome.touched}"
+						formControlName = "primeiroNome"
+						placeholder="Insira o Primeiro nome" />
+					<div *ngIf="f.primeiroNome.errors?.required" class="invalid-feedback">
+						Primeiro Nome é obrigatório
+					</div>
+					<div *ngIf="f.primeiroNome.errors?.minlength" class="invalid-feedback">
+						Primeiro Nome deve possuir pelo menos 5 caracteres
+					</div>
+					<div *ngIf="f.primeiroNome.errors?.maxlength" class="invalid-feedback">
+						Primeiro Nome não deve possuir mais de 50 caracteres
+					</div>
 				</div>
+
+				<!-- **** Último Nome **** -->
 				<div class="col-sm-6">
 					<label>Último nome</label>
-					<input type="text" class="form-control mt-2" placeholder="Insira o Último nome" />
+					<input type="text" class="form-control mt-2"
+						[ngClass]="{'is-invalid': f.ultimoNome.errors && f.ultimoNome.touched}"
+						formControlName = "ultimoNome"
+						placeholder="Insira o Último nome" />
+					<div *ngIf="f.ultimoNome.errors?.maxlength" class="invalid-feedback">
+						Último Nome não deve possuir mais de 50 caracteres
+					</div>
 				</div>
+
 			</div>
+
+			<!-- **** E-mail **** -->
 			<div class="form-group py-3">
 				<label for="">Email:</label>
-				<input class="form-control mt-2" type="text" placeholder="Insira o Nome Completo" />
+				<input class="form-control mt-2" type="text"
+					[ngClass]="{'is-invalid': f.email.errors && f.email.touched}"
+					formControlName="email"
+					placeholder="Insira o Nome Completo" />
+				<div *ngIf="f.email.errors?.required" class="invalid-feedback">
+					E-mail é obrigatório
+				</div>
+				<div *ngIf="f.email.errors?.maxlength" class="invalid-feedback">
+					E-mail não deve possuir mais de 50 caracteres
+				</div>
 			</div>
+
+			<!-- **** Usuário **** -->
 			<div class="form-group">
 				<label for="">Usuario:</label>
-				<input class="form-control mt-2" type="text" placeholder="Insira o nome de Usuário" />
+				<input class="form-control mt-2" type="text"
+					[ngClass]="{'is-invalid': f.usuario.errors && f.usuario.touched}"
+					formControlName="usuario"
+					placeholder="Insira o nome de Usuário" />
+				<div *ngIf="f.usuario.errors?.required" class="invalid-feedback">
+					Usuário é obrigatório
+				</div>
+				<div *ngIf="f.email.errors?.email" class="invalid-feedback">
+					E-mail deve receber um e-mail
+				</div>
 			</div>
+
 			<div class="row justify-content-between py-3">
+
+				<!-- **** Senha **** -->
 				<div class="col-sm-6">
 					<label for="">Senha:</label>
-					<input class="form-control mt-2" type="password" placeholder="Digite uma Senha" />
+					<input class="form-control mt-2" type="password"
+						[ngClass]="{'is-invalid': f.senha.errors && f.senha.touched}"
+						formControlName="senha"
+						placeholder="Digite uma Senha" />
+					<div *ngIf="f.senha.errors?.required" class="invalid-feedback">
+						Senha é obrigatório
+					</div>
+					<div *ngIf="f.senha.errors?.minlength" class="invalid-feedback">
+						Senha deve ter pelo menos 5 caracteres
+					</div>
 				</div>
+
+				<!-- **** Confirmação de Senha **** -->
 				<div class="col-sm-6">
 					<label for="">Confirmar Senha:</label>
-					<input class="form-control mt-2" type="password" placeholder="Confirme a Senha" />
+					<input class="form-control mt-2" type="password"
+						[ngClass]="{'is-invalid': f.confirmaSenha.errors && f.confirmaSenha.touched}"
+						formControlName="confirmaSenha"
+						placeholder="Confirme a Senha" />
+					<div *ngIf="f.confirmaSenha.errors?.required && f.confirmaSenha.touched" class="invalid-feedback">
+						Confirmar Senha é obrigatório
+					</div>
+
 				</div>
+
 			</div>
 			<div class="form-row p-1 mb-3">
 				<div class="custom-control custom-checkbox">
