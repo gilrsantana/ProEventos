@@ -1,4 +1,4 @@
-import { ValidatorField } from './validator-field';
+import { ValidatorField } from './ValidatorField';
 
 describe('ValidatorField', () => {
   it('should create an instance', () => {

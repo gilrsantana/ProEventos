@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup } from "@angular/forms";
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 export class ValidatorField {
 	static MustMatch(controlName: string, matchingControlName: string): any {
@@ -9,8 +9,9 @@ export class ValidatorField {
 
 			// matchingControl.setErrors({mustMatch: false})
 
-			// if (matchingControl.errors && !matchingControl.errors.mustMatch)
-			// 	return null;
+			 if (matchingControl.errors && !matchingControl.errors['mustMatch']) {
+			 	return null;
+			 }
 
 			if (control.value !== matchingControl.value) {
 				matchingControl.setErrors({ mustMatch: true})

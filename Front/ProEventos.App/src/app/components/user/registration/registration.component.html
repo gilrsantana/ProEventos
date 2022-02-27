@@ -57,8 +57,8 @@
 				<div *ngIf="f.email.errors?.required" class="invalid-feedback">
 					E-mail é obrigatório
 				</div>
-				<div *ngIf="f.email.errors?.maxlength" class="invalid-feedback">
-					E-mail não deve possuir mais de 50 caracteres
+				<div *ngIf="f.email.errors?.email" class="invalid-feedback">
+					E-mail deve conter formato de e-mail
 				</div>
 			</div>
 
@@ -71,9 +71,6 @@
 					placeholder="Insira o nome de Usuário" />
 				<div *ngIf="f.usuario.errors?.required" class="invalid-feedback">
 					Usuário é obrigatório
-				</div>
-				<div *ngIf="f.email.errors?.email" class="invalid-feedback">
-					E-mail deve receber um e-mail
 				</div>
 			</div>
 
@@ -101,8 +98,11 @@
 						[ngClass]="{'is-invalid': f.confirmaSenha.errors && f.confirmaSenha.touched}"
 						formControlName="confirmaSenha"
 						placeholder="Confirme a Senha" />
-					<div *ngIf="f.confirmaSenha.errors?.required && f.confirmaSenha.touched" class="invalid-feedback">
+					<div *ngIf="f.confirmaSenha.errors?.required" class="invalid-feedback">
 						Confirmar Senha é obrigatório
+					</div>
+					<div *ngIf="f.confirmaSenha.errors?.mustMatch" class="invalid-feedback">
+						Senhas não conferem
 					</div>
 
 				</div>
@@ -116,7 +116,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					<button class="btn btn-lg btn-success btn-block px-5 my-3 w-100">
+					<button class="btn btn-lg btn-success btn-block px-5 my-3 w-100" [disabled]="!form.valid">
 						Registar
 					</button>
 				</div>

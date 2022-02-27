@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatorField } from '@app/helpers/validator-field';
+import { ValidatorField } from '@app/helpers/ValidatorField';
 
 @Component({
 	selector: 'app-registration',
