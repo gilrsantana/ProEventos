@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatorField } from '@app/helpers/ValidatorField';
 
 @Component({
 	selector: 'app-perfil',
@@ -10,10 +11,10 @@ export class PerfilComponent implements OnInit {
 	public nomeDaPagina: string = "Perfil";
 	form: FormGroup;
 
-	constructor( private fb: FormBuilder) { 
+	constructor( private fb: FormBuilder) {
 		this.form = new FormGroup({});
 	}
-	
+
 	get f(): any {
 		return this.form.controls;
 	}
@@ -23,6 +24,10 @@ export class PerfilComponent implements OnInit {
 	}
 
 	formValidation(): void {
+		const formOptions: AbstractControlOptions = {
+			validators: ValidatorField.MustMatch('senha', 'confirmarSenha')
+		};
+
 		this.form = this.fb.group({
 			primeiroNome: ['', [Validators.required]],
 			ultimoNome: ['', [Validators.required]],
@@ -31,7 +36,7 @@ export class PerfilComponent implements OnInit {
 			descricao: ['', [Validators.required]],
 			senha: ['', [Validators.required]],
 			confirmarSenha: ['', [Validators.required]],
-		});
+		}, formOptions);
 	}
 
 }
