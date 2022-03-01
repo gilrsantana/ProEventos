@@ -1,7 +1,11 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProEventos.Domain
 {
+    // Data Annotation usado para o EF
+    // Modifica o nome da tabela gravada no banco de Palestrante para TBL_Palestrante
+    // [Table("TBL_Palestrante")]
     public class Palestrante
     {
         public int Id { get; set; }

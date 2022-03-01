@@ -1,7 +1,11 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProEventos.Domain
 {
+    // Data Annotation usado para o EF
+    // Modifica o nome da tabela gravada no banco de Lote para TBL_Lote
+    // [Table("TBL_Lote")]
     public class Lote
     {
         public int Id { get; set; }

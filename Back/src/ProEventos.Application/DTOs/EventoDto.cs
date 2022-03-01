@@ -7,7 +7,11 @@ namespace ProEventos.Application.DTOs
     public class EventoDto
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Local { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]        
         public string DataEvento { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
@@ -21,6 +25,7 @@ namespace ProEventos.Application.DTOs
 		[Range(50, 120000, ErrorMessage = "{0} deve ser entre 50 e 120.000")]
         public int QtdPessoas { get; set; }
 
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
 		[RegularExpression(@"(http(s?):)([/|.|\w|\s|-])*(\.(?:jpe?g|gif|png))?", 
 							ErrorMessage = "O campo {0} deve receber um arquivo do tipo imagem")]
         public string ImagemURL { get; set; }
