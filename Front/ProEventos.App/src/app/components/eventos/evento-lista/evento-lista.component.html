@@ -49,7 +49,8 @@
 			<td class="d-none d-md-table-cell">{{evento.local}}</td>
 			<td class="text-center">{{evento.dataEvento | dateTimeFormatPipe}}</td>
 			<td class="text-center d-none d-md-table-cell">{{evento.qtdPessoas}}</td>
-			<td class="text-center d-none d-md-table-cell">{{evento.lotes[0].nome | uppercase}}</td>
+			<td class="text-center d-none d-md-table-cell">{{evento.lotes[0]?.nome | uppercase}}</td>
+			<!-- <td class="text-center d-none d-md-table-cell"  *ngIf="evento.lotes.length == 0">SEM LOTES</td> -->
 			<td class="text-center">
 				<!-- Opção com botões agrupados -->
 				<!-- <div class="btn-group">
