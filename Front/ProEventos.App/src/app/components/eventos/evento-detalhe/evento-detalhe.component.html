@@ -33,7 +33,7 @@
 				<!-- **** Local **** -->
 				<div class="form-group col-md-8">
 					<label class="mb-2">Local</label>
-					<input type="text" class="form-control"
+					<input class="form-control"
 						[ngClass]="cssValidator(f.local)"
 						formControlName="local"
 						placeholder="">
@@ -45,10 +45,14 @@
 				<!-- **** Data e Hora **** -->
 				<div class="form-group col-md-4">
 					<label class="mb-2">Data e Hora</label>
-					<input type="datetime-local" class="form-control"
+					<input type="text" class="form-control"
 						[ngClass]="cssValidator(f.dataEvento)"
 						formControlName="dataEvento"
-						placeholder="">
+						placeholder=""
+						bsDatepicker
+						[bsConfig]="bsConfig">
+						<!-- Or format 'DD/MM/YYYY hh:mm a' for AM/PM default AM
+							https://momentjs.com/docs/#/displaying/format/ -->
 					<div *ngIf="f.dataEvento.errors?.required" class="invalid-feedback">
 						Data e Hora é obrigatório
 					</div>
