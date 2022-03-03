@@ -46,6 +46,7 @@
 				<div class="form-group col-md-4">
 					<label class="mb-2">Data e Hora</label>
 					<input type="text" class="form-control"
+						value="{{evento.dataEvento | dateTimeFormatPipe}}"
 						[ngClass]="cssValidator(f.dataEvento)"
 						formControlName="dataEvento"
 						placeholder=""
